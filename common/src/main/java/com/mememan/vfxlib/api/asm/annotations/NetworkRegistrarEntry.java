@@ -1,6 +1,7 @@
 package com.mememan.vfxlib.api.asm.annotations;
 
-import io.github.chaosawakens.api.platform.services.INetworkManager;
+
+import com.mememan.vfxlib.api.platform.services.INetworkManager;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
