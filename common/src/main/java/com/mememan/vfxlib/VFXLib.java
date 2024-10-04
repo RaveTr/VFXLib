@@ -1,6 +1,6 @@
 package com.mememan.vfxlib;
 
-public class CommonClass {
+public class VFXLib {
 
     public static void initialize() {
     }

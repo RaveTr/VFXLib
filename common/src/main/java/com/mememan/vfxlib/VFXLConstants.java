@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Locale;
 
-public class Constants {
+public class VFXLConstants {
 	public static final String MODID = "vfxlib";
 	public static final String MOD_NAME = "VFX Lib";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
