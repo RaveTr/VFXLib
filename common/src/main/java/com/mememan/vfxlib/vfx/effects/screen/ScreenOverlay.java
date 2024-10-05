@@ -6,7 +6,8 @@ import net.minecraft.client.gui.Gui;
 import java.util.List;
 
 /**
- * Class representing an overlay that can be rendered through Minecraft's {@link Gui}. All data stored in this class is mutable for the sake of avoiding object construction hell during rendering.
+ * Wrapper-Class representing a texture overlay that can be rendered through Minecraft's {@link Gui} + any additional layers. All data stored in this class is mutable for the sake of avoiding
+ * object construction hell during rendering.
  */
 public class ScreenOverlay {
     private OverlayTextureData overlayTexture;
