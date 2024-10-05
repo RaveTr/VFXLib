@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.vfx.effects.camera;
+package com.mememan.vfxlib.vfx.effects.camera.data;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.Camera;
@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * Wrapper-Class representing a {@link Camera} (through a {@link CameraData} object) and any additional on-screen cameras that can be modified in various ways. All data stored in this class is mutable
  * for the sake of avoiding object construction hell during rendering.
+ *
+ * @see CameraData
  */
 public class CameraWrapper {
     private CameraData primaryCamera;

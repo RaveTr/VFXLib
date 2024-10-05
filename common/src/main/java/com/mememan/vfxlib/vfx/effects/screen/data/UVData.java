@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.vfx.effects.screen;
+package com.mememan.vfxlib.vfx.effects.screen.data;
 
 /**
  * Data-holding {@code record} that stores basic UV coordinates.

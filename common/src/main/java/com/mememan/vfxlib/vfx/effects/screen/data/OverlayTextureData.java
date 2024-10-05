@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.vfx.effects.screen;
+package com.mememan.vfxlib.vfx.effects.screen.data;
 
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
@@ -13,6 +13,9 @@ import org.jetbrains.annotations.Nullable;
  * @param screenWidth The value representing the total width of the current Minecraft window, in pixels.
  * @param screenHeight The value representing the total height of the current Minecraft window, in pixels.
  * @param otMutationData The {@link TextureMutationData} representing the modifications applied to the passed-in {@code overlayTextureLocation}. May be {@code null}.
+ *
+ * @see ScreenOverlay
+ * @see TextureMutationData
  */
 public record OverlayTextureData(ResourceLocation overlayTexture, float alpha, double width, double height, double screenWidth, double screenHeight, @Nullable TextureMutationData otMutationData) {
 }

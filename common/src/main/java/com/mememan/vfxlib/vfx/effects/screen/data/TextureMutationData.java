@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.vfx.effects.screen;
+package com.mememan.vfxlib.vfx.effects.screen.data;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -13,6 +13,10 @@ import java.awt.*;
  * @param uvSkewMod The {@link UVData} <b>skewing</b> modification to apply to a given {@link OverlayTextureData}. As the name suggests, this is effectively its slanting/shearing mod on-screen. May be {@code null}.
  * @param rotationMod The {@code rotation} modification to apply to a given {@link OverlayTextureData}. This is merely a {@code double} since you can only rotate 2D textures in 2 directions (+ or -).
  * @param scaleMod The {@code scale} modification to apply to a given {@link OverlayTextureData}. Some implementations of this may allow you to scale an overlay texture beyond the current window size.
+ *
+ * @see OverlayTextureData
+ * @see Color
+ * @see UVData
  */
 public record TextureMutationData(@Nullable Color colorMod, @Nullable UVData uvPosMod, @Nullable UVData uvSkewMod, double rotationMod, double scaleMod) {
 }

@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.vfx.effects.camera;
+package com.mememan.vfxlib.vfx.effects.camera.data;
 
 import net.minecraft.client.Camera;
 import net.minecraft.client.CameraType;
@@ -10,6 +10,9 @@ import org.jetbrains.annotations.Nullable;
  * @param targetCamera The {@link Camera} instance to modify.
  * @param cameraType The {@link CameraType} of the target {@link Camera} instance (I.E. Modifying the target {@link Camera} based on whether its {@link CameraType} matches the provided {@code cameraType}).
  * @param cameraMutationData The {@link CameraMutationData} to apply to the target {@link Camera} instance. May be {@code null}.
+ *
+ * @see CameraWrapper
+ * @see CameraMutationData
  */
 public record CameraData(Camera targetCamera, CameraType cameraType, @Nullable CameraMutationData cameraMutationData) {
 }

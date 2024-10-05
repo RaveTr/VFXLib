@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.vfx.effects.screen;
+package com.mememan.vfxlib.vfx.effects.screen.data;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.gui.Gui;
@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * Wrapper-Class representing a texture overlay that can be rendered through Minecraft's {@link Gui} + any additional layers. All data stored in this class is mutable for the sake of avoiding
  * object construction hell during rendering.
+ *
+ * @see OverlayTextureData
  */
 public class ScreenOverlay {
     private OverlayTextureData overlayTexture;
