@@ -1,6 +1,6 @@
-package com.mememan.vfxlib.api.vfx.cutscene;
+package com.mememan.vfxlib.vfx.cutscene.base;
 
-import com.mememan.vfxlib.api.vfx.effects.base.IScreenEffect;
+import com.mememan.vfxlib.vfx.effects.base.IScreenEffect;
 import net.minecraft.client.Camera;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -26,7 +26,7 @@ public interface ICutScene {
     /**
      * Gets the current progress of this {@link ICutScene} instance, in ticks, since it started.
      *
-     * @return The current progress of this {@link ICutScene} instance, in ticks, since it started.
+     * @return The current progress of this {@link ICutScene} instance (in ticks).
      */
     double getProgress();
 

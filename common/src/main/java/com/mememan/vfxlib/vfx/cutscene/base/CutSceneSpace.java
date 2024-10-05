@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.api.vfx.cutscene;
+package com.mememan.vfxlib.vfx.cutscene.base;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.entity.Entity;

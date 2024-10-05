@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.api.vfx.effects.base;
+package com.mememan.vfxlib.vfx.effects.base;
 
 /**
  * An interface representing any element that can be rendered on a client's visual display (Static/animated overlays, camera effects, level
