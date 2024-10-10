@@ -2,14 +2,17 @@ package com.mememan.vfxlib.api.platform;
 
 import com.mememan.vfxlib.api.asm.ClassFinder;
 import com.mememan.vfxlib.api.loader.ModLoader;
+import com.mememan.vfxlib.api.loader.ModPathWrapper;
 import com.mememan.vfxlib.api.platform.services.IPlatformHelper;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.forgespi.language.ModFileScanData;
 import org.objectweb.asm.Type;
 
 import java.lang.annotation.Annotation;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -40,5 +43,16 @@ public class ForgePlatformHelper implements IPlatformHelper {
                 .map(Type::getClassName)
                 .map(ClassFinder::forName)
                 .collect(Collectors.toCollection(ObjectArrayList::new));
+    }
+
+    @Override
+    public ModPathWrapper getModPathWrapper() {
+        return new ModPathWrapper(FMLPaths.GAMEDIR::get) {
+
+            @Override
+            public Path getOrCreatePath(Path nestedPath) {
+                return FMLPaths.getOrCreateGameRelativePath(nestedPath);
+            }
+        };
     }
 }

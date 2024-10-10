@@ -9,6 +9,19 @@ package com.mememan.vfxlib.vfx.effects.base;
  */
 public interface IScreenEffect {
 
+    /**
+     * The category under which this screen effect instance belongs.
+     *
+     * @return The category under which this screen effect instance belongs.
+     *
+     * @see EffectTypes
+     */
+    IEffectType getEffectType();
 
-
+    /**
+     * Whether this effect should render at all on the client's visual display.
+     *
+     * @return Whether this effect should render at all on the client's visual display.
+     */
+    boolean isVisible();
 }

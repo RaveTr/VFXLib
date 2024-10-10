@@ -3,6 +3,7 @@ package com.mememan.vfxlib.api.platform;
 import com.google.common.reflect.ClassPath;
 import com.mememan.vfxlib.api.asm.ClassFinder;
 import com.mememan.vfxlib.api.loader.ModLoader;
+import com.mememan.vfxlib.api.loader.ModPathWrapper;
 import com.mememan.vfxlib.api.platform.services.IPlatformHelper;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.fabricmc.loader.api.FabricLoader;
@@ -10,6 +11,8 @@ import org.objectweb.asm.*;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +36,27 @@ public class FabricPlatformHelper implements IPlatformHelper {
     @Override
     public List<Class<?>> discoverAnnotatedClasses(Class<? extends Annotation> annotationTypeClazz) {
         return getFilteredAvailableClasses(annotationTypeClazz);
+    }
+
+    @Override
+    public ModPathWrapper getModPathWrapper() {
+        return new ModPathWrapper(() -> FabricLoader.getInstance().getGameDir()) {
+
+            @Override
+            public Path getOrCreatePath(Path nestedPath) { // I love copying from Neo/Forge for stuff that should already be standard :smiling_face_with_3_hearts:
+                Path gameFolderPath = FabricLoader.getInstance().getGameDir().resolve(nestedPath);
+
+                if (!Files.isDirectory(gameFolderPath)) {
+                    try {
+                        Files.createDirectories(gameFolderPath);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+                return gameFolderPath;
+            }
+        };
     }
 
     protected List<Class<?>> getFilteredAvailableClasses(Class<? extends Annotation> annotationTypeClazz) { // I'm sorry (CBF to set up compile-time annotations ATM)

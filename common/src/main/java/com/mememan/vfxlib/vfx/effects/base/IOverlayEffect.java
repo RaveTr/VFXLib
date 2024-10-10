@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.GameRenderer;
 /**
  * A sub-interface of {@link IScreenEffect} that provides more screen-overlay-oriented methods for extensive gui effect customizability.
  */
-public interface IOverlayEffect {
+public interface IOverlayEffect extends IScreenEffect {
 
     /**
      * Renders the {@code screenOverlay} passed into this method through Minecraft's {@link Gui}.

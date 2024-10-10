@@ -2,6 +2,7 @@ package com.mememan.vfxlib.api.platform.services;
 
 import com.mememan.vfxlib.api.loader.EnvironmentType;
 import com.mememan.vfxlib.api.loader.ModLoader;
+import com.mememan.vfxlib.api.loader.ModPathWrapper;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
@@ -20,18 +21,18 @@ public interface IPlatformHelper {
     ModLoader getPlatform();
 
     /**
-     * Checks if a mod with the given id is loaded.
+     * Checks if a mod with the given modid is loaded.
      *
-     * @param modId The mod to check if it is loaded.
+     * @param modId The modid to check against.
      *
-     * @return True if the mod is loaded, false otherwise.
+     * @return {@code true} if the mod is loaded, {@code false} otherwise.
      */
     boolean isModLoaded(String modId);
 
     /**
      * Check if the game is currently in a development environment.
      *
-     * @return True if in a development environment, false otherwise.
+     * @return {@code true} if in a development environment, {@code false} otherwise.
      */
     boolean isDevelopmentEnvironment();
 
@@ -43,6 +44,13 @@ public interface IPlatformHelper {
      * @return A {@link List} of classes annotated with the specified annotation type.
      */
     List<Class<?>> discoverAnnotatedClasses(Class<? extends Annotation> annotationTypeClazz);
+
+    /**
+     * Gets the {@link ModPathWrapper} representing path-related operations for a given loader.
+     *
+     * @return The {@link ModPathWrapper} of the current platform.
+     */
+    ModPathWrapper getModPathWrapper();
 
     /**
      * Gets the name of the environment type as a string.

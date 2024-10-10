@@ -1,5 +1,6 @@
 package com.mememan.vfxlib.vfx.effects.base;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 
 /**
@@ -8,16 +9,25 @@ import net.minecraft.world.level.Level;
 public interface IEffectType {
 
     /**
-     * The name of this effect type.
+     * The name of this effect type, represented as a formattable {@link Component}.
      *
      * @return The name of this effect type.
      */
-    String getTypeName();
+    Component getTypeName();
 
     /**
-     * The {@link EffectPresence} of this effect type (I.E. Whether it physically exists in a {@link Level} or it's merely a GUI/on-screen element).
+     * The description of this effect type, represented as a formattable {@link Component}.
+     *
+     * @return The description of this effect type.
+     */
+    Component getTypeDescription();
+
+    /**
+     * The {@link EffectPresence} of this effect type (I.E. Whether it physically exists in a {@link Level} or if it's merely a GUI/on-screen element).
      *
      * @return The {@link EffectPresence} of this effect type.
      */
     EffectPresence getTypePresence();
+
+
 }
