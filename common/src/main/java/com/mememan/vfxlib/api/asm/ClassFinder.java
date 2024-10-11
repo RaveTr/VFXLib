@@ -7,9 +7,9 @@ public final class ClassFinder {
     /**
      * A utility method that wraps {@link Class#forName(String)} in a {@code try-catch} block.
      *
-     * @param targetClassName The name of the class to load.
+     * @param targetClassName The name of the class to initialize.
      *
-     * @return The loaded class, or {@code null} if no such class exists.
+     * @return The initialized class, or {@code null} if no such class exists.
      */
     public static Class<?> forName(String targetClassName) {
         try {
