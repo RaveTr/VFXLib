@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.vfx.effects.base;
+package com.mememan.vfxlib.vfx.effects.base.fx;
 
 import com.mememan.vfxlib.vfx.effects.camera.data.CameraData;
 import com.mememan.vfxlib.vfx.effects.camera.data.CameraMutationData;

@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.vfx.effects.base;
+package com.mememan.vfxlib.vfx.effects.base.data;
 
 import net.minecraft.world.level.Level;
 
@@ -7,7 +7,7 @@ import net.minecraft.world.level.Level;
  * <br></br>
  * TL;DR: <br>
  * <b>Graphical</b> = No hitbox, tied to client, can be controlled from server (triggering) and client (manipulation).<br>
- * <b>Physical</b> = Hitbox, tied to server, can only be controlled from the server (Graphical effects can be "stacked" on top if needed).
+ * <b>Physical</b> = Hitbox (optional), tied to server, can only be controlled from the server (Graphical effects can be "stacked" on top if needed).
  */
 public enum EffectPresence {
     /**

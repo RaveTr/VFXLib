@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.vfx.effects.base;
+package com.mememan.vfxlib.vfx.effects.base.data;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
@@ -9,18 +9,11 @@ import net.minecraft.world.level.Level;
 public interface IEffectType {
 
     /**
-     * The name of this effect type, represented as a formattable {@link Component}.
+     * The name of this effect type, represented as a formattable {@link Component}. Primarily used in the FX editor in order to distinguish between different effect types in the FX index.
      *
-     * @return The name of this effect type.
+     * @return The {@link EffectMetadata} of this effect type.
      */
-    Component getTypeName();
-
-    /**
-     * The description of this effect type, represented as a formattable {@link Component}.
-     *
-     * @return The description of this effect type.
-     */
-    Component getTypeDescription();
+    EffectMetadata getTypeMetadata();
 
     /**
      * The {@link EffectPresence} of this effect type (I.E. Whether it physically exists in a {@link Level} or if it's merely a GUI/on-screen element).
@@ -28,6 +21,4 @@ public interface IEffectType {
      * @return The {@link EffectPresence} of this effect type.
      */
     EffectPresence getTypePresence();
-
-
 }

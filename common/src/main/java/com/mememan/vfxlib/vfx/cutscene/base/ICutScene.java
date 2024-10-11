@@ -1,6 +1,6 @@
 package com.mememan.vfxlib.vfx.cutscene.base;
 
-import com.mememan.vfxlib.vfx.effects.base.IScreenEffect;
+import com.mememan.vfxlib.vfx.effects.base.fx.IScreenEffect;
 import net.minecraft.client.Camera;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
