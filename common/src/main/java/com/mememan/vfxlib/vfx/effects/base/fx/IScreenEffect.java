@@ -10,7 +10,7 @@ import com.mememan.vfxlib.vfx.effects.base.data.EffectPresence;
  * being directly implemented by VFX classes, as per standard VFXLib conventions. <br></br>
  *
  * It should be noted that by default, any effect derived from this interface typically falls under effect types whose effect presence is {@link EffectPresence#GRAPHICAL}. Some exceptions may exist for effects that have some
- * relationship to the server but should still be manipulated to some extent by the client, such as ghost-object effects, object-tied afterimage overlays, etc.
+ * relationship to the server but should still be manipulated to some extent by the client, such as <b>derived</b> ghost object effects, object-tied afterimage overlays, etc.
  */
 public interface IScreenEffect extends IEffect {
 
