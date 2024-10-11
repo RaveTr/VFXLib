@@ -18,9 +18,10 @@ public class VFXLConstants {
 
 	public static final Supplier<File> ROOT_VFXLIB_DIR = Suppliers.memoize(() -> VFXLServices.PLATFORM.getModPathWrapper().getOrCreatePath(Path.of("vfxlib")).toFile());
 
-	public static final File CUTSCENES_DIR = new File(ROOT_VFXLIB_DIR.get(), "cutscenes");
 	public static final File WORKING_DIR = new File(ROOT_VFXLIB_DIR.get(), "working"); // Basically the directory for the files currently being edited, if any (session locks, etc.)
 	public static final File BACKUPS_DIR = new File(ROOT_VFXLIB_DIR.get(), "backups"); // Whenever a save is made (if enabled in settings), takes a snapshot of the current editing session and stores it in this directory
+
+	public static final File CUTSCENES_DIR = new File(ROOT_VFXLIB_DIR.get(), "cutscenes");
 
 	public static final File FX_DIR = new File(ROOT_VFXLIB_DIR.get(), "effects");
 	public static final File VFX_DIR = new File(FX_DIR, "vfx");
