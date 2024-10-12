@@ -2,8 +2,9 @@ package com.mememan.vfxlib.vfx.effects.base.fx;
 
 import com.mememan.vfxlib.vfx.effects.base.data.EffectMetadata;
 import com.mememan.vfxlib.vfx.effects.base.data.EffectTypes;
+import com.mememan.vfxlib.vfx.effects.base.data.IEffectTransition;
 import com.mememan.vfxlib.vfx.effects.base.data.IEffectType;
-import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * The base interface for all VFX effects. <br></br>
@@ -27,11 +28,21 @@ public interface IEffect {
     IEffectType getEffectType();
 
     /**
-     * The name of this effect, represented as a formattable {@link Component}. Primarily used in the FX editor in order to distinguish between different effects in the FX index.
+     * The metadata of this effect. Primarily used in the FX editor in order to distinguish between different effects in the FX index.
      *
      * @return The {@link EffectMetadata} of this effect.
      */
     EffectMetadata getEffectMetadata();
+
+    /**
+     * The transition object responsible for handling transitions to/from/between this effect instance and other effects.
+     *
+     * @return The {@link IEffectTransition} of this effect instance. May be {@code null}.
+     *
+     * @see IEffectTransition
+     */
+    @Nullable
+    IEffectTransition getEffectTransition();
 
     /**
      * Whether this effect should render at all on the client's visual display (For physical effects, whether they can be seen by both players AND entities, and whether they have any effect/hitbox).
@@ -79,6 +90,7 @@ public interface IEffect {
      * @param abruptDequeue Whether this effect should be dequeued immediately instead of being transitioned out-of smoothly.
      *
      * @see #dequeueEffect()
+     * @see #getEffectTransition()
      */
     void dequeueEffect(boolean abruptDequeue);
 
@@ -86,6 +98,7 @@ public interface IEffect {
      * Overloaded variant of {@link #dequeueEffect(boolean)}, with {@code abruptDequeue} defaulted to {@code false}.
      *
      * @see #dequeueEffect(boolean)
+     * @see #getEffectTransition()
      */
     default void dequeueEffect() {
         dequeueEffect(false);

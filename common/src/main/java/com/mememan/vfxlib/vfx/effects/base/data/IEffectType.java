@@ -1,6 +1,5 @@
 package com.mememan.vfxlib.vfx.effects.base.data;
 
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 
 /**
@@ -9,7 +8,7 @@ import net.minecraft.world.level.Level;
 public interface IEffectType {
 
     /**
-     * The name of this effect type, represented as a formattable {@link Component}. Primarily used in the FX editor in order to distinguish between different effect types in the FX index.
+     * The metadata of this effect type. Primarily used in the FX editor in order to distinguish between different effect types in the FX index.
      *
      * @return The {@link EffectMetadata} of this effect type.
      */

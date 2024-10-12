@@ -6,7 +6,7 @@ import net.minecraft.world.level.Level;
  * An enum representing the existence of an effect, either in graphical (on-screen, GUI) or physical (in a {@link Level}) sense.
  * <br></br>
  * TL;DR: <br>
- * <b>Graphical</b> = No hitbox, tied to client, can be controlled from server (triggering) and client (manipulation).<br>
+ * <b>Graphical</b> = No hitbox, tied to client, can be controlled from server (triggering, checking for activity/visibility) and client (manipulation).<br>
  * <b>Physical</b> = Hitbox (optional), tied to server, can only be controlled from the server (Graphical effects can be "stacked" on top if needed).
  */
 public enum EffectPresence {
