@@ -1,6 +1,6 @@
 package com.mememan.vfxlib.vfx.cutscene.base;
 
-import com.mememan.vfxlib.vfx.effects.base.fx.IScreenEffect;
+import com.mememan.vfxlib.vfx.effects.base.fx.IEffect;
 import net.minecraft.client.Camera;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -103,11 +103,11 @@ public interface ICutScene {
     List<Camera> getAdditionalCameras();
 
     /**
-     * Gets the {@link List} of {@link IScreenEffect} instances used to render GUI effects or otherwise manipulate the view of the client in any way.
+     * Gets the {@link List} of {@link IEffect} instances used in this {@link ICutScene} instance.
      *
-     * @return The {@link List} of {@link IScreenEffect} instances associated with this {@link ICutScene} instance. May be emtpy.
+     * @return The {@link List} of {@link IEffect} instances associated with this {@link ICutScene} instance. May be empty.
      */
-    List<IScreenEffect> getVFX();
+    List<IEffect> getVFX();
 
     /**
      * Whether this {@link ICutScene} instance can be interrupted by external events (E.G. All players leaving, any given player dying, etc.).
