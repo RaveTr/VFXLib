@@ -20,23 +20,23 @@ public interface IEffectTransition {
     EffectMetadata getTransitionMetadata();
 
     /**
-     * The
+     * The {@link Consumer} responsible for handling transitions to the consumed effect instance.
      *
-     * @return
+     * @return The {@link Consumer} responsible for handling transitions to the consumed effect instance.
      */
     Consumer<IEffect> transitionToEffect();
 
     /**
-     * The
+     * The {@link Consumer} responsible for handling transitions out of/from the consumed effect instance.
      *
-     * @return
+     * @return The {@link Consumer} responsible for handling transitions out of/from the consumed effect instance.
      */
     Consumer<IEffect> transitionFromEffect();
 
     /**
-     * The
+     * The {@link BiConsumer} responsible for handling transitions between 2 particular consumed effect instances.
      *
-     * @return
+     * @return The {@link BiConsumer} responsible for handling transitions between 2 consumed particular effect instances.
      */
     BiConsumer<IEffect, IEffect> transitionBetweenEffects();
 }
