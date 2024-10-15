@@ -1,9 +1,7 @@
 package com.mememan.vfxlib.vfx.cutscene.base;
 
 import com.mememan.vfxlib.vfx.effects.base.fx.IEffect;
-import net.minecraft.client.Camera;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -83,24 +81,6 @@ public interface ICutScene {
      * @see #getCutSceneSpace()
      */
     List<Entity> getStoredEntities();
-
-    /**
-     * Gets the {@link Camera} associated with this {@link ICutScene} instance (I.E. The {@link Camera} all stored {@linkplain Player Players} will be viewing).
-     *
-     * @return The {@link Camera} associated with this {@link ICutScene} instance.
-     *
-     * @see #getAdditionalCameras()
-     */
-    Camera getMainCamera();
-
-    /**
-     * Gets a {@link List} of additional {@link Camera Cameras} associated with this {@link ICutScene} instance. Useful for cutscenes with effects that require split views or similar effects.
-     *
-     * @return A {@link List} of additional {@link Camera Cameras} associated with this {@link ICutScene} instance. May be empty.
-     *
-     * @see #getMainCamera()
-     */
-    List<Camera> getAdditionalCameras();
 
     /**
      * Gets the {@link List} of {@link IEffect} instances used in this {@link ICutScene} instance.

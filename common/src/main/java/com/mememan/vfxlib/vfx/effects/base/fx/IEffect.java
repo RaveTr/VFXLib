@@ -1,9 +1,6 @@
 package com.mememan.vfxlib.vfx.effects.base.fx;
 
-import com.mememan.vfxlib.vfx.effects.base.data.EffectMetadata;
-import com.mememan.vfxlib.vfx.effects.base.data.EffectTypes;
-import com.mememan.vfxlib.vfx.effects.base.data.IEffectTransition;
-import com.mememan.vfxlib.vfx.effects.base.data.IEffectType;
+import com.mememan.vfxlib.vfx.effects.base.data.*;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -103,4 +100,59 @@ public interface IEffect {
     default void dequeueEffect() {
         dequeueEffect(false);
     }
+
+    /**
+     * Whether this effect instance is currently being played. Typically {@code true} the moment this effect instance is being played in the FX queue, including the start of transitions.
+     *
+     * @return Whether this effect instance is active.
+     *
+     * @see #isInTransition()
+     */
+    boolean isActive();
+
+    /**
+     * Whether this effect instance is currently being transitioned in/out of.
+     *
+     * @return Whether this effect instance is explicitly in transition, or {@code false} if {@link #getEffectTransition()} is {@code null}.
+     *
+     * @see #isActive()
+     */
+    boolean isInTransition();
+
+    /**
+     * The current progress (in ticks by default) this effect instance is on from when it starts ticking.<br></br>
+     *
+     * Take note that different implementations of this method will return different values depending on a number of factors (whether the effect is {@link EffectPresence#PHYSICAL} or {@link EffectPresence#GRAPHICAL},
+     * the side on which this method is being called, etc.).<br></br>
+     *
+     * Some interface implementations of this method may redirect you to a different way of getting their effect instance's progress due to implemented abstractions and/or necessary behavioural overrides. In that case, they
+     * should override this javadoc with their own letting you know which variant of this method to call.
+     *
+     * @param forTransition Whether the current progress to return is for a transition. Always returns 0 if {@link #isInTransition()} is {@code false}.
+     *
+     * @return The current progress in ticks this effect instance is on from when it starts ticking.
+     *
+     * @see #getCurrentEffectTick()
+     * @see #isActive()
+     * @see #isInTransition()
+     */
+    double getCurrentEffectTick(boolean forTransition);
+
+    /**
+     * Overloaded variant of {@link #getCurrentEffectTick(boolean)}, with {@code forTransition} defaulted to {@code false}.
+     *
+     * @return The current progress in ticks this effect instance is on from when it starts ticking.
+     *
+     * @see #getCurrentEffectTick(boolean)
+     * @see #isActive()
+     * @see #isInTransition()
+     */
+    default double getCurrentEffectTick() {
+        return getCurrentEffectTick(false);
+    }
+
+    void tickEffect(boolean onClient);
+
+    @Nullable
+    EffectStack getEffectStack();
 }

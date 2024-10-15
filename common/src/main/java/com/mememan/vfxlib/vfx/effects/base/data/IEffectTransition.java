@@ -39,4 +39,6 @@ public interface IEffectTransition {
      * @return The {@link BiConsumer} responsible for handling transitions between 2 consumed particular effect instances.
      */
     BiConsumer<IEffect, IEffect> transitionBetweenEffects();
+
+
 }
