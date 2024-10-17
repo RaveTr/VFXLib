@@ -1,9 +1,10 @@
 package com.mememan.vfxlib.vfx.effects.base.data;
 
 import com.mememan.vfxlib.vfx.effects.base.fx.IEffect;
+import it.unimi.dsi.fastutil.Pair;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import java.util.List;
 
 /**
  * Data-holding {@code interface} representing data used in order to transition to/from/between different effects. Note that not every effect necessarily has a transition.
@@ -19,26 +20,28 @@ public interface IEffectTransition {
      */
     EffectMetadata getTransitionMetadata();
 
-    /**
-     * The {@link Consumer} responsible for handling transitions to the consumed effect instance.
-     *
-     * @return The {@link Consumer} responsible for handling transitions to the consumed effect instance.
-     */
-    Consumer<IEffect> transitionToEffect();
+    List<Pair<IEffect, IEffect>> getSpecificTransitions(); //TODO effect transition container/wrapper
 
-    /**
-     * The {@link Consumer} responsible for handling transitions out of/from the consumed effect instance.
-     *
-     * @return The {@link Consumer} responsible for handling transitions out of/from the consumed effect instance.
-     */
-    Consumer<IEffect> transitionFromEffect();
+    List<Pair<IEffect, IEffect>> getActiveSpecificTransitions();
 
-    /**
-     * The {@link BiConsumer} responsible for handling transitions between 2 particular consumed effect instances.
-     *
-     * @return The {@link BiConsumer} responsible for handling transitions between 2 consumed particular effect instances.
-     */
-    BiConsumer<IEffect, IEffect> transitionBetweenEffects();
+    List<IEffect> getExplicitTransitions();
 
+    List<IEffect> getActiveExplicitTransitions();
 
+    List<IEffect> getActiveGeneralTransitions();
+
+    @Nullable
+    EffectTransitionPhase getCurrentPhaseFor(IEffect targetEffect);
+
+    double getEffectTransitionTick();
+
+    double getEffectTransitionLength();
+
+    double getEffectTransitionSpeedModifier();
+
+    boolean isActiveFor(IEffect targetEffect);
+
+    void performTransition(IEffect targetEffect);
+
+    void performGeneralisedTransition(@Nullable IEffect from, @Nullable IEffect to);
 }
