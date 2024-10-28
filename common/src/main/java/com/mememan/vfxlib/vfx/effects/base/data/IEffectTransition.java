@@ -2,9 +2,11 @@ package com.mememan.vfxlib.vfx.effects.base.data;
 
 import com.mememan.vfxlib.vfx.effects.base.fx.IEffect;
 import it.unimi.dsi.fastutil.Pair;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Data-holding {@code interface} representing data used in order to transition to/from/between different effects. Note that not every effect necessarily has a transition.
@@ -20,28 +22,36 @@ public interface IEffectTransition {
      */
     EffectMetadata getTransitionMetadata();
 
+    List<IEffectType> getValidEffectTypes();
+
     List<Pair<IEffect, IEffect>> getSpecificTransitions(); //TODO effect transition container/wrapper
 
-    List<Pair<IEffect, IEffect>> getActiveSpecificTransitions();
+    Queue<Pair<IEffect, IEffect>> getActiveSpecificTransitions();
 
     List<IEffect> getExplicitTransitions();
 
-    List<IEffect> getActiveExplicitTransitions();
+    Queue<IEffect> getActiveExplicitTransitions();
 
-    List<IEffect> getActiveGeneralTransitions();
+    Queue<IEffect> getActiveGeneralTransitions();
+
+    double getEffectTransitionLength();
 
     @Nullable
     EffectTransitionPhase getCurrentPhaseFor(IEffect targetEffect);
 
-    double getEffectTransitionTick();
+    double getEffectTransitionTickFor(IEffect targetEffect);
 
-    double getEffectTransitionLength();
-
-    double getEffectTransitionSpeedModifier();
+    double getEffectTransitionSpeedModifierFor(IEffect targetEffect);
 
     boolean isActiveFor(IEffect targetEffect);
 
-    void performTransition(IEffect targetEffect);
+    boolean allowEffectConcurrency(IEffect targetEffect);
+
+    boolean allowTransitionConcurrency(IEffectTransition other);
+
+    void performExplicitTransition(IEffect targetEffect);
+
+    void performSpecificTransition(@NotNull IEffect from, @NotNull IEffect to);
 
     void performGeneralisedTransition(@Nullable IEffect from, @Nullable IEffect to);
 }

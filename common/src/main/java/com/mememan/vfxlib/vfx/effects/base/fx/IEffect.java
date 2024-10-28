@@ -125,7 +125,7 @@ public interface IEffect {
      * Take note that different implementations of this method will return different values depending on a number of factors (whether the effect is {@link EffectPresence#PHYSICAL} or {@link EffectPresence#GRAPHICAL},
      * the side on which this method is being called, etc.).<br></br>
      *
-     * Some interface implementations of this method may redirect you to a different way of getting their effect instance's progress due to implemented abstractions and/or necessary behavioural overrides. In that case, they
+     * Some interface (or class) implementations of this method may redirect you to a different way of getting their effect instance's progress due to implemented abstractions and/or necessary behavioural overrides. In that case, they
      * should override this javadoc with their own letting you know which variant of this method to call.
      *
      * @param forTransition Whether the current progress to return is for a transition. Always returns 0 if {@link #isInTransition()} is {@code false}.
@@ -151,7 +151,27 @@ public interface IEffect {
         return getCurrentEffectTick(false);
     }
 
-    void tickEffect(boolean onClient);
+    /**
+     * The base method responsible for ticking this effect instance, whether on the server or on the client. Different implementations of this method will work differently on either side, depending on the effect instance
+     * itself. <br></br>
+     *
+     * Typically, this method will be called every tick if it's running on the server at a standard 20 TPS and sync to the client. {@link #getCurrentEffectTick()} should handle progress-getting appropriately.
+     *
+     * @see #renderEffect(float)
+     */
+    void tickEffect();
+
+    /**
+     * The base method responsible for rendering this effect instance exclusively on the client. Different implementations of this method will work differently on either side, depending on the effect instance
+     * itself. <br></br>
+     *
+     * Typically, this method will be called every render frame on the client and updated at standard partial tickrates. {@link #getCurrentEffectTick()} should handle progress-getting appropriately.
+     *
+     * @param partialTick The current partial tick - between 0.0 and 1.0.
+     *
+     * @see #tickEffect()
+     */
+    void renderEffect(float partialTick);
 
     @Nullable
     EffectStack getEffectStack();
