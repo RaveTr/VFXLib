@@ -16,36 +16,38 @@ public class VFXLConstants {
 	public static final String MOD_NAME = "VFXLib";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
 
-	public static final Supplier<File> ROOT_VFXLIB_DIR = Suppliers.memoize(() -> VFXLServices.PLATFORM.getModPathWrapper().getOrCreatePath(Path.of("vfxlib")).toFile());
-
-	public static final File WORKING_DIR = new File(ROOT_VFXLIB_DIR.get(), "working"); // Basically the directory for the files currently being edited, if any (session locks, etc.)
-	public static final File BACKUPS_DIR = new File(ROOT_VFXLIB_DIR.get(), "backups"); // Whenever a save is made (if enabled in settings), takes a snapshot of the current editing session and stores it in this directory
-	public static final File SAVES_DIR = new File(ROOT_VFXLIB_DIR.get(), "saved"); // All saved elements in their current state are stored in this directory
-
-	public static final File CUTSCENES_DIR = new File(SAVES_DIR, "cutscenes");
-
-	public static final File FX_DIR = new File(SAVES_DIR, "effects");
-	public static final File VFX_DIR = new File(FX_DIR, "vfx");
-	public static final File SFX_DIR = new File(FX_DIR, "sfx");
-
-	public static final File ASSETS_DIR = new File(SAVES_DIR, "assets");
-
-	public static final File ENTITY_ASSETS_DIR = new File(ASSETS_DIR, "entity");
-	public static final File ENTITY_ANIMATIONS_DIR = new File(ENTITY_ASSETS_DIR, "animations");
-	public static final File ENTITY_MODELS_DIR = new File(ENTITY_ASSETS_DIR, "models");
-	public static final File ENTITY_TEXTURES_DIR = new File(ENTITY_ASSETS_DIR, "textures");
-
-	public static final File BLOCK_ASSETS_DIR = new File(ASSETS_DIR, "block");
-	public static final File BLOCK_ANIMATIONS_DIR = new File(BLOCK_ASSETS_DIR, "animations");
-	public static final File BLOCK_MODELS_DIR = new File(BLOCK_ASSETS_DIR, "models");
-	public static final File BLOCK_TEXTURES_DIR = new File(BLOCK_ASSETS_DIR, "textures");
-
-	public static final File ITEM_ASSETS_DIR = new File(ASSETS_DIR, "item");
-	public static final File ITEM_ANIMATIONS_DIR = new File(ITEM_ASSETS_DIR, "animations");
-	public static final File ITEM_MODELS_DIR = new File(ITEM_ASSETS_DIR, "models");
-	public static final File ITEM_TEXTURES_DIR = new File(ITEM_ASSETS_DIR, "textures");
-
 	public static ResourceLocation prefix(String path) {
 		return new ResourceLocation(MODID, path.toLowerCase(Locale.ROOT));
+	}
+
+	public static class FileConstants { // To defer loading without having to impl yet another method for lazy initialization (I'm lazy rn icl)
+		public static final Supplier<File> ROOT_VFXLIB_DIR = Suppliers.memoize(() -> VFXLServices.PLATFORM.getModPathWrapper().getOrCreatePath(Path.of("vfxlib")).toFile());
+
+		public static final File WORKING_DIR = new File(ROOT_VFXLIB_DIR.get(), "working"); // Basically the directory for the files currently being edited, if any (session locks, etc.)
+		public static final File BACKUPS_DIR = new File(ROOT_VFXLIB_DIR.get(), "backups"); // Whenever a save is made (if enabled in settings), takes a snapshot of the current editing session and stores it in this directory
+		public static final File SAVES_DIR = new File(ROOT_VFXLIB_DIR.get(), "saved"); // All saved elements in their current state are stored in this directory
+
+		public static final File CUTSCENES_DIR = new File(SAVES_DIR, "cutscenes");
+
+		public static final File FX_DIR = new File(SAVES_DIR, "effects");
+		public static final File VFX_DIR = new File(FX_DIR, "vfx");
+		public static final File SFX_DIR = new File(FX_DIR, "sfx");
+
+		public static final File ASSETS_DIR = new File(SAVES_DIR, "assets");
+
+		public static final File ENTITY_ASSETS_DIR = new File(ASSETS_DIR, "entity");
+		public static final File ENTITY_ANIMATIONS_DIR = new File(ENTITY_ASSETS_DIR, "animations");
+		public static final File ENTITY_MODELS_DIR = new File(ENTITY_ASSETS_DIR, "models");
+		public static final File ENTITY_TEXTURES_DIR = new File(ENTITY_ASSETS_DIR, "textures");
+
+		public static final File BLOCK_ASSETS_DIR = new File(ASSETS_DIR, "block");
+		public static final File BLOCK_ANIMATIONS_DIR = new File(BLOCK_ASSETS_DIR, "animations");
+		public static final File BLOCK_MODELS_DIR = new File(BLOCK_ASSETS_DIR, "models");
+		public static final File BLOCK_TEXTURES_DIR = new File(BLOCK_ASSETS_DIR, "textures");
+
+		public static final File ITEM_ASSETS_DIR = new File(ASSETS_DIR, "item");
+		public static final File ITEM_ANIMATIONS_DIR = new File(ITEM_ASSETS_DIR, "animations");
+		public static final File ITEM_MODELS_DIR = new File(ITEM_ASSETS_DIR, "models");
+		public static final File ITEM_TEXTURES_DIR = new File(ITEM_ASSETS_DIR, "textures");
 	}
 }

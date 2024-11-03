@@ -165,9 +165,9 @@ public interface IEffect {
      * The base method responsible for rendering this effect instance exclusively on the client. Different implementations of this method will work differently on either side, depending on the effect instance
      * itself. <br></br>
      *
-     * Typically, this method will be called every render frame on the client and updated at standard partial tickrates. {@link #getCurrentEffectTick()} should handle progress-getting appropriately.
+     * Typically, this method will be called every render frame on the client. {@link #getCurrentEffectTick()} should still handle progress-getting appropriately.
      *
-     * @param partialTick The current partial tick - between 0.0 and 1.0.
+     * @param partialTick The current partial tick - between 0.0 and 1.0. Used to interpolate between each game tick (20 TPS).
      *
      * @see #tickEffect()
      */
@@ -175,4 +175,10 @@ public interface IEffect {
 
     @Nullable
     EffectStack getEffectStack();
+
+    void setEffectStack(EffectStack newStack);
+
+    EffectLayer getEffectLayer();
+
+    void setEffectLayer(EffectLayer newLayer);
 }
