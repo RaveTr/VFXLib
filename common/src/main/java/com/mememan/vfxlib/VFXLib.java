@@ -7,7 +7,7 @@ import com.mememan.vfxlib.api.platform.VFXLServices;
 public class VFXLib {
 
     /**
-     * The main method responsible for initializing pretty much all Chaos Awakens content and whatnot.
+     * The main method responsible for initializing pretty much all VFXLib content and whatnot.
      */
     public static void initialize() {
         VFXLServices.PLATFORM.discoverAnnotatedClasses(LoadEarly.class);

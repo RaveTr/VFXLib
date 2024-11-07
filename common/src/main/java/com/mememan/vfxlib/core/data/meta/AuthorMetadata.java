@@ -1,4 +1,4 @@
-package com.mememan.vfxlib.core.data;
+package com.mememan.vfxlib.core.data.meta;
 
 import net.minecraft.network.chat.Component;
 
