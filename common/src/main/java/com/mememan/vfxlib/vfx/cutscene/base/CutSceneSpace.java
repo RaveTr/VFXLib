@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.AABB;
 
 /**
- * A class representing a minified/modified implementation of {@link AABB}, usually representing any {@link Level} space occupied by a given {@link ICutScene} instance.
+ * A class representing a minified/modified implementation of {@link AABB}, usually representing any {@link Level} space occupied by a given {@link CutScene} instance.
  */
 public class CutSceneSpace {
     protected final LevelAccessor curLevel;

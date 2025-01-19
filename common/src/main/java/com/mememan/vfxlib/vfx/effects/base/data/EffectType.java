@@ -5,7 +5,7 @@ import net.minecraft.world.level.Level;
 /**
  * An interface with the sole purpose of categorising VFX effect types. Provides a number of useful identification methods.
  */
-public interface IEffectType {
+public interface EffectType {
 
     /**
      * The metadata of this effect type. Primarily used in the FX editor in order to distinguish between different effect types in the FX index.

@@ -1,5 +1,7 @@
 package com.mememan.vfxlib.vfx.effects.camera.data;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.client.Camera;
 
 /**
@@ -16,4 +18,5 @@ import net.minecraft.client.Camera;
  * @see CameraData
  */
 public record CameraMutationData(double fovMod, double yawMod, double pitchMod, double rollMod) {
+    public static final Codec<CameraMutationData> CODEC = RecordCodecBuilder.create(inst -> inst.group(Codec.DOUBLE.fieldOf("fovMod").forGetter(CameraMutationData::fovMod), Codec.DOUBLE.fieldOf("yawMod").forGetter(CameraMutationData::yawMod), Codec.DOUBLE.fieldOf("pitchMod").forGetter(CameraMutationData::pitchMod), Codec.DOUBLE.fieldOf("rollMod").forGetter(CameraMutationData::rollMod)).apply(inst, CameraMutationData::new));
 }

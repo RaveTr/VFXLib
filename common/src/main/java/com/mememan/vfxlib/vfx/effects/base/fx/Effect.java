@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
  * Note that this interface should <b>NOT</b> be used for direct effect implementations, but that it should rather be used as the foundation for more spec-tailored effect interfaces, which are then optimally
  * implemented and fleshed-out for proper use.
  */
-public interface IEffect {
+public interface Effect {
 
     /**
      * The category under which this effect instance belongs.
@@ -22,7 +22,7 @@ public interface IEffect {
      *
      * @see EffectTypes
      */
-    IEffectType getEffectType();
+    EffectType getEffectType();
 
     /**
      * The metadata of this effect. Primarily used in the FX editor in order to distinguish between different effects in the FX index.
@@ -34,12 +34,12 @@ public interface IEffect {
     /**
      * The transition object responsible for handling transitions to/from/between this effect instance and other effects.
      *
-     * @return The {@link IEffectTransition} of this effect instance. May be {@code null}.
+     * @return The {@link EffectTransition} of this effect instance. May be {@code null}.
      *
-     * @see IEffectTransition
+     * @see EffectTransition
      */
     @Nullable
-    IEffectTransition getEffectTransition();
+    EffectTransition getEffectTransition();
 
     /**
      * Whether this effect should render at all on the client's visual display (For physical effects, whether they can be seen by both players AND entities, and whether they have any effect/hitbox).
